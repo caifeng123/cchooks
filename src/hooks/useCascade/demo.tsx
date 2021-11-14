@@ -12,10 +12,11 @@ const useCascadeDemo = () => {
       <br />
       - 当前面的值被修改时，会将后面的所有值清空
       <br />
-      - tips:设定escape 为true 则 当删减为空字符串将会删除当前值 等同于
+      - tips:escapeEmpty 为true 则 当删减为空字符串将会删除当前值 等同于
       undefined
       <br />
-      {JSON.stringify(cascade)}
+      <br />
+      存储值：{JSON.stringify(cascade)}
       <br />
       {arr.map((c, i) => (
         <Input

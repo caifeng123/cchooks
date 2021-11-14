@@ -18,7 +18,9 @@ const DemoHeader = () => {
           {location.pathname?.match(/.*\/(\w+)/)?.[1] ?? ""}
         </div>
       </div>
-      <Outlet />
+      <div style={{ padding: 10 }}>
+        <Outlet />
+      </div>
     </>
   );
 };

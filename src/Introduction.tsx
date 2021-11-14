@@ -75,12 +75,12 @@ const Introduction = () => (
     >
       cchooks
     </div>
-    <div>
+    <div style={{ textAlign: "center", marginBottom: 20 }}>
       业务开发时为节约开发效率，自己造的轮子,有问题请在
-      <a target="_blank" href="https://github.com/caifeng123/cchook">
-        issues中
+      <a target="_blank" href="https://github.com/caifeng123/cchooks">
+        issues
       </a>
-      提出宝贵建议
+      中提出宝贵建议
     </div>
     <Table rowKey="url" columns={columns} dataSource={dataSource} />
   </>

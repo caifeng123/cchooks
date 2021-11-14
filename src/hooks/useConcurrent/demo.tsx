@@ -22,7 +22,7 @@ const useConcurrentDemo = () => {
   const { res, failNumber } = useConcurrent({
     apis: [promise1, promise2, promise3],
     params: [],
-    filter: [(a) => +a, (a) => +a, (a) => +a]
+    filter: [(a) => +a, (a) => a, (a) => a]
   });
   // const res = [1,23]
   return (
