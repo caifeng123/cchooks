@@ -13,7 +13,7 @@ Introduction：
 
 ## demo
 
-![chrome-capture (8)](https://raw.githubusercontent.com/caifeng123/pictures/master/chrome-capture(8).gif)
+![chrome-capture (8)](https://raw.githubusercontent.com/caifeng123/pictures/master/chrome-capture (8).gif)
 
 - 简介
 
