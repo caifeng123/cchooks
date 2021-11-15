@@ -4,28 +4,25 @@
  */
 
 import { useState, useCallback } from "react";
-import _ from "lodash";
 import useDeepEffect from "../useDeepEffect/useDeepEffect";
 
 const useCascade = <T extends {}>(
-  initalArr?: T[],
+  initalArr: T[] = [],
   escapeEmpty: boolean = false
 ) => {
-  const [data, setData] = useState<T[]>(initalArr || []);
+  const [data, setData] = useState<T[]>(initalArr);
   const setVal = useCallback(
     (ind: number, val: T) => {
-      setData((data) => {
+      setData((temp) => {
+        const data = temp.slice(0, ind + (escapeEmpty ? +!!val : 1));
         data[ind] = val;
-        return data.slice(0, ind + (escapeEmpty ? +!!val : 1));
+        return data;
       });
     },
     [escapeEmpty]
   );
-  const reload = () => setData(initalArr || []);
-  useDeepEffect(
-    () => initalArr && setData(initalArr),
-    _.clone(initalArr) ?? []
-  );
+  const reload = () => setData(initalArr);
+  useDeepEffect(() => setData(initalArr), [initalArr]);
   return [data, setVal, reload] as const;
 };
 

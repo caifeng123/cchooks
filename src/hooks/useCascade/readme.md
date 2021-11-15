@@ -11,7 +11,7 @@
 
 ## demo
 
-![UseCascadeDemo](<https://raw.githubusercontent.com/caifeng123/pictures/master/chrome-capture%20(2).gif>)
+![UseCascadeDemo](<https://raw.githubusercontent.com/caifeng123/pictures/master/chrome-capture%20(7).gif>)
 
 - 专注看钩子做了什么事情（对监管的数据做了什么事情）
 
@@ -35,18 +35,33 @@
 const arr = new Array(5).fill("");
 
 export default () => {
-  const [cascade, setCascade, reload] = useCascade(["12"]);
+  const [state, setState] = useState([12, 123]);
+  // setCascade 直接设置第几项的值即可
+  const [cascade, setCascade, reload] = useCascade(state, true);
   return (
     <>
+      - 级联输入框，只有当前面被输入才会开放修改后面的值
+      <br />
+      - 当前面的值被修改时，会将后面的所有值清空
+      <br />
+      - tips:escapeEmpty 为true 则 当删减为空字符串将会删除当前值 等同于
+      undefined
+      <br />
+      <br />
+      存储值：{JSON.stringify(cascade)}
+      <br />
+      <Button onClick={reload}>reload</Button>
+      <Button onClick={() => setState([11, 1, 123])}>changeInit</Button>
+      <br />
       {arr.map((c, i) => (
         <Input
+          key={i}
           style={{ width: 120, margin: "10px" }}
           value={cascade[i]}
           disabled={!!i && !cascade[i - 1]}
           onChange={(e) => setCascade(i, e.target.value)}
         />
       ))}
-      <Button onClick={reload}>reload</Button>
     </>
   );
 };
