@@ -15,12 +15,15 @@ const useCounterDemo = () => {
   const handleSet = () => set(ref.current.value);
   return (
     <>
-      <div>{current}</div>
-      <button onClick={() => inc()}>inc</button>
-      <button onClick={() => dec()}>dec</button>
+      <div>值：{current}（默认20 限制[15~25] ）</div>
+      <button onClick={() => inc(2)}>自增步长2</button>
+      <button onClick={() => inc(5)}>自增步长5</button>
+      <button onClick={() => dec(1)}>自减步长1</button>
+      <button onClick={() => dec(4)}>自减步长4</button>
+      <button onClick={() => reset()}>reset</button>
+      <br />
       <input ref={ref} />
       <button onClick={handleSet}>set</button>
-      <button onClick={() => reset()}>reset</button>
     </>
   );
 };

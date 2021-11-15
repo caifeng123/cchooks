@@ -10,7 +10,12 @@ interface maxAndmin {
   max: number;
 }
 
-const useCounter = (initialValue: number, { min, max }: maxAndmin) => {
+const defaultVal = { min: -Infinity, max: Infinity };
+
+const useCounter = (
+  initialValue: number,
+  { min, max }: maxAndmin = defaultVal
+) => {
   const [current, setCurrent] = useState(initialValue);
   const setValidData = useCallback(
     (dataFunc: number | Function) => {
@@ -24,8 +29,8 @@ const useCounter = (initialValue: number, { min, max }: maxAndmin) => {
     [max, min]
   );
   const actions = useMemo(() => {
-    const inc = (delta = 1) => setValidData((cur: number) => cur + delta);
-    const dec = (delta = 1) => setValidData((cur: number) => cur - delta);
+    const inc = (delta: number) => setValidData((cur: number) => cur + delta);
+    const dec = (delta: number) => setValidData((cur: number) => cur - delta);
     const set = (e: number) => setValidData(+e);
     const reset = () => setValidData(initialValue);
     return {
