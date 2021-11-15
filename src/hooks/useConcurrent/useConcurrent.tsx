@@ -3,27 +3,37 @@
  * @author caifeng01
  */
 
-import { useEffect, useState } from "react";
-import _ from "lodash";
+import { useState, useRef } from "react";
+import useDeepEffect from "../useDeepEffect/useDeepEffect";
 
 type UseConcurrentProps = {
-  apis: ((...args: any[]) => void)[];
-  params: any[];
-  filter: ((data: any) => any)[] | ((data: any) => any);
+  apis: Array<(...args: any[]) => Promise<any>>;
+  params?: any[];
+  filter?: Array<((data: any) => any) | undefined> | ((data: any) => any);
+  dep?: any[];
 };
-type AnsProps = {
+
+type StateProps = {
   res: Array<any>;
   failNumber: number;
 };
 
+interface AnsProps extends StateProps {
+  reload: () => void;
+}
+
 const useConcurrent = ({
   apis,
-  params,
-  filter
+  params = [],
+  filter = (e) => e,
+  dep = []
 }: UseConcurrentProps): AnsProps => {
-  const [ans, setAns] = useState<AnsProps>({ res: [], failNumber: 0 });
+  const [ans, setAns] = useState<StateProps>({ res: [], failNumber: 0 });
+  const onceRef = useRef<number>();
 
-  useEffect(() => {
+  const fetch = () => {
+    const temp = Math.random();
+    onceRef.current = temp;
     Promise.allSettled(apis.map((api, index) => api(params[index]))).then(
       (res: any[]) => {
         let num = 0;
@@ -31,17 +41,21 @@ const useConcurrent = ({
           if (status === "rejected") {
             // do rejected thing
             num++;
+            // return reason; - reject的值
+            return {};
           }
-          return _.isFunction(filter)
+          return typeof filter === "function"
             ? filter(value)
             : filter[index]?.(value) || value;
         });
-        setAns({ res: allData, failNumber: num });
+        if (temp === onceRef.current) {
+          setAns({ res: allData, failNumber: num });
+        }
       }
     );
-  }, []);
+  };
+  useDeepEffect(fetch, dep);
 
-  return ans;
+  return { ...ans, reload: fetch };
 };
-
 export default useConcurrent;
