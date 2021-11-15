@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { KeepDepth } from "../util";
 
 const useDeepEffect = (fun: React.EffectCallback, dep: Array<any>) => {
-  useEffect(fun, KeepDepth(dep));
+  useEffect(fun, [KeepDepth(dep)]);
 };
 
 export default useDeepEffect;
