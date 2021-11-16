@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import useEffectCallback from "./useEffectCallback";
 
 const ExpensiveTree = memo(({ onClick }: { onClick: (e) => void }) => {
@@ -23,7 +23,7 @@ const ExpensiveTree = memo(({ onClick }: { onClick: (e) => void }) => {
 
 export default function Index() {
   const [text, updateText] = useState("Initial value");
-
+  const temp = useRef();
   /**
    * 以下两种切换 使用观察右侧输入框Demo
    * 使用useEffectCallback正常
@@ -32,23 +32,38 @@ export default function Index() {
    *  - 依赖为[text] 则与什么都不用相同
    * 什么都不用 卡死
    */
-
   const handleSubmit = useEffectCallback(
-    (c) => {
+    (c: string) => {
       console.log(`Text: ${text + c}`);
     },
     [text]
   );
 
-  // const handleSubmit = useCallback(() => {
-  //   console.log(`Text: ${text}`);
+  // 最通常的useCallback
+  // const handleSubmit = useCallback(
+  //   (c: string) => {
+  //     console.log(`Text: ${text + c}`);
+  //   },
+  //   [text]
+  // );
+
+  // 利用ref存储state绕过依赖项检查
+  // const handleSubmit = useCallback((e) => {
+  //   console.log(`Text: ${temp.current}${e}`);
   // }, []);
 
+  // 裸奔状态，本demo中类似于callback依赖 text
   // const handleSubmit = () => console.log(`Text: ${text}`)
 
   return (
     <>
-      <input value={text} onChange={(e) => updateText(e.target.value)} />
+      <input
+        value={text}
+        onChange={(e) => {
+          updateText(e.target.value);
+          temp.current = e.target.value;
+        }}
+      />
       <ExpensiveTree onClick={handleSubmit} />
     </>
   );
