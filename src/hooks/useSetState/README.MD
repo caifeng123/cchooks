@@ -110,7 +110,7 @@ export default () => {
 ```typescript
 // 无话可说，强行解说，和setState相同的initialValue。。。
 props {
-	initialValue: T	
+  initialValue: T	
 };
 ```
 
@@ -120,8 +120,8 @@ props {
 // 着重看下setState，接收参数为回调函数/对象形式数据/深层对象数据等
 return {
   readonly [
-  	state: T,
-	setState: (data: Record<string, any> | ((da: T) => T)) => void 
+    state: T,
+    setState: (data: Record<string, any> | ((da: T) => T)) => void 
   ]
 }
 ```
