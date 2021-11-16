@@ -132,7 +132,7 @@ export default function Index() {
 ```typescript
 // 和useCallback接收参数相同,其中的依赖项其实就是 any[]
 type props = {
-	fn: React.EffectCallback,
+  fn: React.EffectCallback,
   dep: React.DependencyList
 };
 ```
@@ -141,7 +141,7 @@ type props = {
 
 ```js
 return {
-	func: useCallback函数
+  func: useCallback函数
 }
 ```
 
