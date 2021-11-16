@@ -21,8 +21,8 @@ const useRequestDemo = () => {
   return (
     <>
       {number + JSON.stringify(params)}
-      <button onClick={() => inc()}>+</button>
-      <button onClick={() => dec()}>-</button>
+      <button onClick={() => inc(1)}>+</button>
+      <button onClick={() => dec(2)}>-</button>
       <button onClick={() => set(2)}>set to 2</button>
       <button onClick={() => setParams({ name: params.name.concat(1) })}>
         setParams

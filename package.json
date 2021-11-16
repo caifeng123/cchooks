@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
+    "@ant-design/icons": "4.6.4",
     "@types/lodash": "4.14.172",
     "@types/react-router-config": "5.0.3",
     "ahooks": "2.10.9",
