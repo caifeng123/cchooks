@@ -53,7 +53,7 @@ export default function Index() {
   // }, []);
 
   // 裸奔状态，本demo中类似于callback依赖 text
-  // const handleSubmit = () => console.log(`Text: ${text}`)
+  //const handleSubmit = () => console.log(`Text: ${text}`)
 
   return (
     <>

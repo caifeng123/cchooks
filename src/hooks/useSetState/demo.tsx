@@ -11,12 +11,12 @@
  */
 import useSetState from "./useSetState";
 
-const useRequestDemo = () => {
+const useSetStateDemo = () => {
   const [a, setA] = useSetState({ name: { hah: 2 }, age: 2 });
-  const [b, setB] = useSetState([{name:1}]);
+  const [b, setB] = useSetState([{ name: 1 }]);
   return (
     <>
-      {JSON.stringify(a)}
+      A的值：{JSON.stringify(a)}
       <br />
       <button onClick={() => setA({ area: new Date() })}>
         {`setA({ area: 当前时间 })`}
@@ -34,13 +34,13 @@ const useRequestDemo = () => {
         {`setA(c => ({...c,age: 10}))`}
       </button>
       <br />
-      {JSON.stringify(b)}
+      B的值：{JSON.stringify(b)}
       <br />
-      <button onClick={() => setB({'0':{c:2}})}>
+      <button onClick={() => setB({ "0": { c: 2 } })}>
         {`setB({'0':{c:2}})`}
       </button>
     </>
   );
 };
 
-export default useRequestDemo;
+export default useSetStateDemo;
