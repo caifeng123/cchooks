@@ -8,7 +8,7 @@ Introduction：
 
   - 页面有2个state - text,number 任意一个state变化就会导致页面重新渲染
   - 此时我们有个子组件依赖对象obj ,obj每次刷新都会生成全新组合的对象
-  - 此时 <ExpensiveTree/> 已经被memo包裹，对memo不熟悉的请看 [memo教程]()
+  - 此时 <ExpensiveTree/> 已经被memo包裹，对memo不熟悉的请看 [memo教程](https://github.com/caifeng123/cchooks/tree/main/src/teachDemos/memo)
 
   ```tsx
   export default () => {
