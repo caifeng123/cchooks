@@ -1,5 +1,5 @@
 /**
- * @file cchooks示例入口
+ * @file 示例入口
  * @author caifeng01
  */
 import { Table } from "antd";
@@ -40,11 +40,6 @@ const dataSource = [
     name: "UseSetStateDemo",
     describe: "useState升级钩子",
     url: "UseSetStateDemo"
-  },
-  {
-    name: "UseDeepValue",
-    describe: "深值比较钩子",
-    url: "UseDeepValue"
   }
 ];
 
@@ -63,12 +58,23 @@ const columns = [
     title: "demo",
     dataIndex: "url",
     key: "url",
-    render: (url: string) => <Link to={`/cchooksdemo/${url}`}>点击查看</Link>
+    render: (url: string) => <Link to={`/demo/${url}`}>点击查看</Link>
   }
 ];
 
 const Introduction = () => (
   <>
+    <div
+      style={{
+        textAlign: "center",
+        padding: "10px",
+        color: "#108cee",
+        fontWeight: 500,
+        fontSize: 20
+      }}
+    >
+      cchooks
+    </div>
     <div style={{ textAlign: "center", marginBottom: 20 }}>
       业务开发时为节约开发效率，自己造的轮子,有问题请在
       <a target="_blank" href="https://github.com/caifeng123/cchooks">
