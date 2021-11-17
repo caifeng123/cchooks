@@ -40,6 +40,11 @@ const dataSource = [
     name: "UseSetStateDemo",
     describe: "useState升级钩子",
     url: "UseSetStateDemo"
+  },
+  {
+    name: "UseDeepValue",
+    describe: "深值比较钩子",
+    url: "UseDeepValue"
   }
 ];
 
@@ -58,7 +63,7 @@ const columns = [
     title: "demo",
     dataIndex: "url",
     key: "url",
-    render: (url: string) => <Link to={`/demo/${url}`}>点击查看</Link>
+    render: (url: string) => <Link to={`/cchooksdemo/${url}`}>点击查看</Link>
   }
 ];
 

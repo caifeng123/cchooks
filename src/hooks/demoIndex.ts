@@ -11,3 +11,4 @@ export { default as UseDeepEffectDemo } from "./useDeepEffect/demo";
 export { default as UseEffectCallbackDemo } from "./useEffectCallback/demo";
 export { default as UseRequestDemo } from "./useRequest/demo";
 export { default as UseSetStateDemo } from "./useSetState/demo";
+export { default as UseDeepValue } from "./useDeepValue/demo";

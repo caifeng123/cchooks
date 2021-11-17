@@ -2,19 +2,32 @@
  * @file 简介索引
  * @author caifeng
  */
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { CarouselRef } from "antd/lib/carousel";
 import { Carousel } from "antd";
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 import CChooks from "./cchooks";
+import TeachDemos from "./teachdemos";
 import { useCounter } from "../hooks";
 
 const config = {
   CCHOOKS: <CChooks />,
-  TEACHDEMOS: <CChooks />
+  TEACHDEMOS: <TeachDemos />
 };
 
 const configArr = Object.keys(config);
+
+const Temp = memo(
+  ({
+    carouselRef
+  }: {
+    carouselRef: React.MutableRefObject<CarouselRef | null | undefined>;
+  }) => (
+    <Carousel arrows ref={(ref) => (carouselRef.current = ref)}>
+      {Object.values(config).map((item) => item)}
+    </Carousel>
+  )
+);
 
 export default () => {
   const carouselRef = useRef<CarouselRef | null>();
@@ -49,9 +62,7 @@ export default () => {
           }}
         />
       </div>
-      <Carousel arrows ref={(ref) => (carouselRef.current = ref)}>
-        {Object.values(config).map((item) => item)}
-      </Carousel>
+      <Temp carouselRef={carouselRef} />
     </>
   );
 };
