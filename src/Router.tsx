@@ -15,7 +15,7 @@ import {
   UseRequestDemo,
   UseSetStateDemo
 } from "./hooks/demoIndex";
-import { MemoDemo } from "./teachDemos/demoIndex";
+import { MemoDemo, UseEffectDemo } from "./teachDemos/demoIndex";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Introduction from "./Introduction";
 const App = () => {
@@ -39,7 +39,7 @@ const App = () => {
           </Route>
           <Route path="/teachdemo" element={<DemoHeader />}>
             <Route path="MemoDemo" element={<MemoDemo />} />
-            <Route path="UseConcurrentDemo" element={<UseConcurrentDemo />} />
+            <Route path="UseEffectDemo" element={<UseEffectDemo />} />
             <Route path="UseCascadeDemo" element={<UseCascadeDemo />} />
             <Route path="UseCounterDemo" element={<UseCounterDemo />} />
             <Route path="UseDeepEffectDemo" element={<UseDeepEffectDemo />} />

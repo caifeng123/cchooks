@@ -4,3 +4,4 @@
  */
 
 export { default as MemoDemo } from "./memo";
+export { default as UseEffectDemo } from "./useEffect";

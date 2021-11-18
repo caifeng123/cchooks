@@ -7,9 +7,14 @@ import { Link } from "react-router-dom";
 
 const dataSource = [
   {
-    name: "UseCascadeDemo",
+    name: "MemoDemo",
     describe: "级联下拉钩子",
     url: "MemoDemo"
+  },
+  {
+    name: "UseEffectDemo",
+    describe: "级联下拉钩子",
+    url: "UseEffectDemo"
   }
 ];
 
