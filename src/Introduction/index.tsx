@@ -28,35 +28,43 @@ const Temp = memo(
     </Carousel>
   )
 );
+const max = configArr.length - 1;
 
 export default () => {
   const carouselRef = useRef<CarouselRef | null>();
   const [number, { inc, dec }] = useCounter(0, {
     min: 0,
-    max: configArr.length - 1
+    max
   });
   return (
     <>
       <div
         style={{
           display: "flex",
-          justifyContent: "space-evenly",
+          justifyContent: "space-between",
+          padding: "10px 80px",
           fontSize: 20,
           color: "#108cee",
           fontWeight: 500
         }}
       >
         <CaretLeftOutlined
-          style={{ fontSize: 30 }}
+          style={{ fontSize: 30, color: !number ? "#ccc" : "" }}
           onClick={() => {
+            if (!number) {
+              return;
+            }
             carouselRef.current?.prev();
             dec(1);
           }}
         />
         <div>{configArr[number]}</div>
         <CaretRightOutlined
-          style={{ fontSize: 30 }}
+          style={{ fontSize: 30, color: number >= max ? "#ccc" : "" }}
           onClick={() => {
+            if (number >= max) {
+              return;
+            }
             carouselRef.current?.next();
             inc(1);
           }}
