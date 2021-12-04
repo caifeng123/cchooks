@@ -34,7 +34,7 @@ const useConcurrent = ({
   const fetch = () => {
     const temp = Math.random();
     onceRef.current = temp;
-    Promise.allSettled(apis.map((api, index) => api(...params[index]))).then(
+    Promise.allSettled(apis.map((api, index) => api(...params[index] || []))).then(
       (res: any[]) => {
         let num = 0;
         const allData = res.map(({ status, value, reason }, index) => {
