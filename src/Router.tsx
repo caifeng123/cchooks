@@ -3,7 +3,6 @@
  * @author caifeng01
  */
 
-import React from "react";
 import {
   DemoHeader,
   UseCascadeDemo,
